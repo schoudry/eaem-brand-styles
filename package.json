@@ -1,13 +1,11 @@
 {
-  "name": "eaem-site-from-template-theme",
+  "name": "eaem-eds-themes",
   "version": "0.0.2",
-  "description": "Standard AEM site theme",
+  "description": "AEM EDS Themes",
   "license": "MIT License, Copyright 2020 Adobe Systems Incorporated",
   "scripts": {
     "build": "rimraf dist && parcel build src/theme.ts",
     "watch": "parcel watch src/theme.ts",
-    "proxy": "aem-site-theme-builder live",
-    "live": "npm-run-all -p watch proxy",
     "release": "rimraf release && parcel build src/theme.ts --dist-dir release",
     "prepare": "husky"
   },

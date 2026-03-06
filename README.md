@@ -1,34 +1,151 @@
-# Site Theme
+# Multi-Brand AEM Styling System
 
-This is the theme of the standard site template for Adobe Experience Manager (AEM).
+A streamlined multi-brand theming system for Adobe Experience Manager (AEM) with design tokens and automated builds.
 
-This theme can be modified to customize the visual appearance of sites created from the standard site template and deployed using the [AEM Front-End Pipeline](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/developing/developing-with-front-end-pipelines.html?lang=en) in Cloud Manager.
+## 🎨 Brand System
 
-## Suported Node version(s)
+This theme supports three distinct brand identities:
 
-By default Cloud Manager will use Node 14 to execute the Front-End Pipeline. Versions 12 and 16 are also available for the pipeline and can be selected by using the `NODE_VERSION` [CM pipeline variable](https://experienceleague.adobe.com/docs/experience-manager-cloud-manager/content/getting-started/project-creation/build-environment.html?lang=en#pipeline-variables).
+| Brand | Body Background | Title Background | Font |
+|-------|----------------|------------------|------|
+| 🟢 **Green** | Very light green (#e8f5e9) | Light green | Source Serif Pro |
+| 🔴 **Red** | Very light red (#ffebee) | Light coral | Source Sans Pro Bold |
+| 🟡 **Yellow** | Very light yellow (#fffde7) | Light yellow | Source Sans Pro Regular |
 
-## Structure
-
-* `src/main.ts`: This is the main entry point of your JS & CSS theme.
-* `src/site`: Files that are generic to the entire site.
-* `src/components`: Files that are specific to components.
-* `src/resources`: Associated files, like icons, logos, fonts.
-
-## Build
-
-1. Initialize the project with following command executed at the theme root:
+## 📁 Structure
 
 ```
+src/
+├── theme.ts                    # Entry point
+├── theme.scss                  # Main stylesheet
+├── site/
+│   ├── _variables.scss         # Design tokens (brand colors)
+│   ├── _fonts.scss             # Web font definitions
+│   ├── _brand-green.scss       # Green brand theme
+│   ├── _brand-red.scss         # Red brand theme
+│   └── _brand-yellow.scss      # Yellow brand theme
+├── blocks/
+│   ├── brand-green/title/      # Green title component
+│   ├── brand-red/title/        # Red title component
+│   └── brand-yellow/title/     # Yellow title component
+└── resources/
+    └── fonts/                  # Font files (woff2)
+```
+
+## 🚀 Getting Started
+
+### 1. Install Dependencies
+
+```bash
 npm install
 ```
 
-2. Complete the `.env` file with credentials for the local proxy server to access the site created on Cloud Service.
+### 2. Development
 
-3. Run the local proxy server while working to preview your changes with the content from the production environment.
+```bash
+# Watch mode for development
+npm run watch
 
-```
+# Live preview with AEM proxy
 npm run live
 ```
 
-4. Once your work is completed, check your changes into your [git repository](https://www.adobe.com/go/aem_qsc_retrieve_access_en) and [deploy your customized theme](https://www.adobe.com/go/aem_qsc_deploy_theme_en).
+### 3. Build
+
+```bash
+# Development build (outputs to dist/)
+npm run build
+
+# Production build (outputs to release/)
+npm run release
+```
+
+## 🎯 Using Brands
+
+Add the brand class to the `<body>` element or a parent container:
+
+```html
+<!-- Green Brand -->
+<body class="brand-green">
+  <div class="cmp-title">
+    <h1 class="title">Green Themed Title</h1>
+  </div>
+</body>
+
+<!-- Red Brand -->
+<body class="brand-red">
+  <div class="cmp-title">
+    <h1 class="title">Red Themed Title</h1>
+  </div>
+</body>
+
+<!-- Yellow Brand -->
+<body class="brand-yellow">
+  <div class="cmp-title">
+    <h1 class="title">Yellow Themed Title</h1>
+  </div>
+</body>
+```
+
+## 🎨 Design Tokens
+
+All brand colors are centralized in `src/site/_variables.scss`:
+
+```scss
+// Brand Green
+$brand-green-bg: lightgreen;
+$brand-green-body-bg: #e8f5e9;
+
+// Brand Red
+$brand-red-bg: lightcoral;
+$brand-red-body-bg: #ffebee;
+
+// Brand Yellow
+$brand-yellow-bg: lightyellow;
+$brand-yellow-body-bg: #fffde7;
+```
+
+## 🔧 CSS Specificity
+
+Brand-specific styles use increased specificity to override base styles:
+
+```scss
+// Specificity: 0,0,2,1
+body.brand-green .title {
+  background-color: $brand-green-bg;
+}
+```
+
+## 🪝 Git Hooks
+
+The project uses Husky for automated builds:
+
+- **Pre-push hook**: Automatically runs `npm run release` before every push
+- **Ensures**: Fresh build artifacts in `release/` folder on every push
+
+## 📦 Release Output
+
+The `release/` folder contains production-ready files:
+
+```
+release/
+├── theme.css (1.17 KB)
+├── theme.js (35 B)
+└── resources/
+    └── fonts/
+        ├── SourceSansPro-Bold.woff2 (12.92 KB)
+        ├── SourceSansPro-Regular.woff2 (13.04 KB)
+        └── SourceSerifPro-Regular.woff2 (19.96 KB)
+```
+
+## 🧪 Preview
+
+Open `preview-all-brands.html` in a browser to see all brand styles in action.
+
+## 🔗 Deployment
+
+Deploy this theme to AEM using the [Front-End Pipeline](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/developing/developing-with-front-end-pipelines.html) in Cloud Manager.
+
+## 📝 License
+
+MIT License, Copyright 2020 Adobe Systems Incorporated
