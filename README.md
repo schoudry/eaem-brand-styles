@@ -68,23 +68,17 @@ Add the brand class to the `<body>` element or a parent container:
 ```html
 <!-- Green Brand -->
 <body class="brand-green">
-  <div class="cmp-title">
-    <h1 class="title">Green Themed Title</h1>
-  </div>
+  <h1 class="title">Green Themed Title</h1>
 </body>
 
 <!-- Red Brand -->
 <body class="brand-red">
-  <div class="cmp-title">
-    <h1 class="title">Red Themed Title</h1>
-  </div>
+  <h1 class="title">Red Themed Title</h1>
 </body>
 
 <!-- Yellow Brand -->
 <body class="brand-yellow">
-  <div class="cmp-title">
-    <h1 class="title">Yellow Themed Title</h1>
-  </div>
+  <h1 class="title">Yellow Themed Title</h1>
 </body>
 ```
 
