@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf dist && parcel build src/theme.ts",
     "watch": "parcel watch src/theme.ts",
-    "release": "rimraf release && parcel build src/theme.ts --dist-dir release",
+    "release": "rimraf release && parcel build src/theme.scss src/brand-green.scss src/brand-red.scss src/brand-yellow.scss src/brand-green-title.scss src/brand-red-title.scss src/brand-yellow-title.scss --dist-dir release --no-source-maps && node scripts/organize-release.js",
     "prepare": "husky"
   },
   "devDependencies": {

@@ -57,6 +57,7 @@ npm run live
 npm run build
 
 # Production build (outputs to release/)
+# Generates both theme.css (all brands) and brand-specific CSS files
 npm run release
 ```
 
@@ -129,14 +130,35 @@ The `release/` folder contains production-ready files:
 
 ```
 release/
-├── theme.css (1.17 KB)
-├── theme.js (35 B)
+├── theme.css (1.13 KB)                      # All brands combined
+├── brand-green.css (902 B)                  # Green brand theme
+├── brand-red.css (927 B)                    # Red brand theme
+├── brand-yellow.css (927 B)                 # Yellow brand theme
+├── brand-green/
+│   └── blocks/
+│       └── title/
+│           └── title.css (69 B)             # Green brand title block
+├── brand-red/
+│   └── blocks/
+│       └── title/
+│           └── title.css (65 B)             # Red brand title block
+├── brand-yellow/
+│   └── blocks/
+│       └── title/
+│           └── title.css (71 B)             # Yellow brand title block
 └── resources/
     └── fonts/
         ├── SourceSansPro-Bold.woff2 (12.92 KB)
         ├── SourceSansPro-Regular.woff2 (13.04 KB)
         └── SourceSerifPro-Regular.woff2 (19.96 KB)
 ```
+
+**Usage Options:**
+- Use `theme.css` to include all brands and blocks (recommended for multi-brand sites)
+- Use individual brand CSS files for modular loading:
+  - `brand-green.css` for site-level branding
+  - `brand-green/blocks/title/title.css` for title block styling
+  - Load only what you need to minimize file size
 
 ## 🧪 Preview
 
