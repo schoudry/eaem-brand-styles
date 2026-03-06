@@ -1,4 +1,4 @@
-# Multi-Brand AEM Styling System
+# Multi-Brand AEM EDS Styling System
 
 A streamlined multi-brand theming system for Adobe Experience Manager (AEM) with design tokens and automated builds.
 
