@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Brands Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            margin: 0;
+        }
+        
+        /* Brand-green body background */
+        body.brand-green {
+            background-color: #e8f5e9; /* Very light green */
+        }
+        
+        /* Brand-red body background */
+        body.brand-red {
+            background-color: #ffebee; /* Very light red */
+        }
+        
+        /* Brand-yellow body background */
+        body.brand-yellow {
+            background-color: #fffde7; /* Very light yellow */
+        }
+        
+        /* Brand-green title styles */
+        body.brand-green .title,
+        .brand-green .title {
+            background-color: lightgreen;
+        }
+        
+        /* Brand-red title styles */
+        body.brand-red .title,
+        .brand-red .title {
+            background-color: lightcoral;
+        }
+        
+        /* Brand-yellow title styles */
+        body.brand-yellow .title,
+        .brand-yellow .title {
+            background-color: lightyellow;
+        }
+        
+        .cmp-title {
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            display: inline-block;
+            padding: 10px;
+            margin: 0;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .brand-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        /* Individual brand section backgrounds */
+        .brand-section.brand-green {
+            background-color: #e8f5e9;
+        }
+        
+        .brand-section.brand-red {
+            background-color: #ffebee;
+        }
+        
+        .brand-section.brand-yellow {
+            background-color: #fffde7;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; background: white; padding: 20px; margin: 0 0 40px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">All Brand Styles Preview</h1>
+    <div style="background: white; padding: 20px; margin-bottom: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <h3>Brand System Overview</h3>
+        <p>Each brand has two key styling elements:</p>
+        <ul>
+            <li><strong>Body Background:</strong> Very subtle light color applied to the entire page</li>
+            <li><strong>Title Background:</strong> More vibrant color applied to title text elements</li>
+        </ul>
+        <p>Scroll down to see each brand's styling in action.</p>
+    </div>
+    
+    <!-- Brand Green -->
+    <div class="brand-section brand-green">
+        <div class="container">
+            <h2>🟢 Brand Green</h2>
+            <p><strong>Body Background:</strong> Very light green (#e8f5e9)</p>
+            <p><strong>Title Background:</strong> Light green</p>
+            
+            <div class="cmp-title">
+                <h1 class="title">H1 Title with Green Background</h1>
+            </div>
+            
+            <div class="cmp-title">
+                <h2 class="title">H2 Title with Green Background</h2>
+            </div>
+            
+            <div class="cmp-title">
+                <h3 class="title">H3 Title with Green Background</h3>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Brand Red -->
+    <div class="brand-section brand-red">
+        <div class="container">
+            <h2>🔴 Brand Red</h2>
+            <p><strong>Body Background:</strong> Very light red (#ffebee)</p>
+            <p><strong>Title Background:</strong> Light coral</p>
+            
+            <div class="cmp-title">
+                <h1 class="title">H1 Title with Red Background</h1>
+            </div>
+            
+            <div class="cmp-title">
+                <h2 class="title">H2 Title with Red Background</h2>
+            </div>
+            
+            <div class="cmp-title">
+                <h3 class="title">H3 Title with Red Background</h3>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Brand Yellow -->
+    <div class="brand-section brand-yellow">
+        <div class="container">
+            <h2>🟡 Brand Yellow</h2>
+            <p><strong>Body Background:</strong> Very light yellow (#fffde7)</p>
+            <p><strong>Title Background:</strong> Light yellow</p>
+            
+            <div class="cmp-title">
+                <h1 class="title">H1 Title with Yellow Background</h1>
+            </div>
+            
+            <div class="cmp-title">
+                <h2 class="title">H2 Title with Yellow Background</h2>
+            </div>
+            
+            <div class="cmp-title">
+                <h3 class="title">H3 Title with Yellow Background</h3>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Comparison -->
+    <div class="container">
+        <h2>📊 Side-by-Side Comparison</h2>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div class="brand-green">
+                <div class="cmp-title">
+                    <h3 class="title">Green</h3>
+                </div>
+            </div>
+            <div class="brand-red">
+                <div class="cmp-title">
+                    <h3 class="title">Red</h3>
+                </div>
+            </div>
+            <div class="brand-yellow">
+                <div class="cmp-title">
+                    <h3 class="title">Yellow</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
