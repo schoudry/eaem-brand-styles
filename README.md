@@ -164,6 +164,31 @@ release/
 
 Open `preview-all-brands.html` in a browser to see all brand styles in action.
 
+## 🚀 GitHub Actions
+
+The project includes an automated deployment workflow that syncs the release folder to the `eaem-dev-eds` repository.
+
+### Workflow: Deploy to EDS
+
+**Trigger:** Pushes to `master` or `main` branch
+
+**What it does:**
+1. Builds the release folder
+2. Clones the `eaem-dev-eds` repository
+3. Copies release contents to `eaem-dev-eds/styles/`
+4. Commits and pushes changes automatically
+
+### Setup Instructions
+
+To enable the workflow, add a `DEPLOY_TOKEN` secret to this repository:
+
+1. Go to GitHub → Your Profile → Settings → Developer settings → Personal access tokens
+2. Generate a new token with `repo` scope
+3. Go to this repository → Settings → Secrets and variables → Actions
+4. Add a new secret named `DEPLOY_TOKEN` with the token value
+
+The workflow will run automatically on every push to master/main.
+
 ## 🔗 Deployment
 
 Deploy this theme to AEM using the [Front-End Pipeline](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/developing/developing-with-front-end-pipelines.html) in Cloud Manager.

@@ -1,0 +1,66 @@
+name: Deploy to EDS
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout brand-styles repo
+        uses: actions/checkout@v4
+        with:
+          path: brand-styles
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: brand-styles/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: brand-styles
+        run: npm ci
+      
+      - name: Build release
+        working-directory: brand-styles
+        run: npm run release
+      
+      - name: Checkout eaem-dev-eds repo
+        uses: actions/checkout@v4
+        with:
+          repository: schoudry/eaem-dev-eds
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          path: eaem-dev-eds
+      
+      - name: Copy release to styles folder
+        run: |
+          # Remove old styles
+          rm -rf eaem-dev-eds/styles/*
+          
+          # Copy new release files
+          cp -r brand-styles/release/* eaem-dev-eds/styles/
+          
+          # List copied files for verification
+          echo "Deployed files:"
+          ls -R eaem-dev-eds/styles/
+      
+      - name: Commit and push to eaem-dev-eds
+        working-directory: eaem-dev-eds
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add styles/
+          
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update brand styles from eaem-brand-styles"
+            git push
+          fi
