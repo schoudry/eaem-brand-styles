@@ -1,4 +1,4 @@
-name: Deploy to EDS
+name: Deploy to eaem-dev-eds
 
 on:
   push:
@@ -40,10 +40,7 @@ jobs:
       
       - name: Copy release to styles folder
         run: |
-          # Remove old styles
-          rm -rf eaem-dev-eds/styles/*
-          
-          # Copy new release files
+          # Copy new release files (overwrite if exists)
           cp -r brand-styles/release/* eaem-dev-eds/styles/
           
           # List copied files for verification
