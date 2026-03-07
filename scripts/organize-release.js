@@ -24,12 +24,22 @@ brands.forEach(brand => {
   }
   
   // Move title CSS to blocks folder
-  const titleSource = path.join(releaseDir, `${brand}-title.css`);
+  const titleSource = path.join(releaseDir, 'blocks', brand, `${brand}-title.css`);
   const titleTarget = path.join(blockDir, 'title.css');
   
   if (fs.existsSync(titleSource)) {
     fs.renameSync(titleSource, titleTarget);
-    console.log(`Moved ${brand}-title.css -> ${brand}/blocks/title/title.css`);
+    console.log(`Moved blocks/${brand}/${brand}-title.css -> ${brand}/blocks/title/title.css`);
+  }
+  
+  // Clean up empty blocks folder structure
+  const blocksDir = path.join(releaseDir, 'blocks', brand);
+  if (fs.existsSync(blocksDir) && fs.readdirSync(blocksDir).length === 0) {
+    fs.rmdirSync(blocksDir);
+  }
+  const rootBlocksDir = path.join(releaseDir, 'blocks');
+  if (fs.existsSync(rootBlocksDir) && fs.readdirSync(rootBlocksDir).length === 0) {
+    fs.rmdirSync(rootBlocksDir);
   }
 });
 
